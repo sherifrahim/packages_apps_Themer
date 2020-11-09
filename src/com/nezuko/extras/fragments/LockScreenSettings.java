@@ -35,6 +35,8 @@ import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
 import android.provider.Settings;
 import androidx.preference.ListPreference;
+import com.nezuko.extras.preferences.SystemSettingSwitchPreference;
+import com.nezuko.extras.preferences.SystemSettingListPreference;
 
 import android.provider.Settings;
 import com.android.settings.R;
@@ -42,6 +44,9 @@ import com.android.settings.SettingsPreferenceFragment;
 
 public class LockScreenSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
+
+    private static final String KEY_FOD_RECOGNIZING_ANIMATION = "fod_recognizing_animation";
+    private static final String KEY_FOD_RECOGNIZING_ANIMATION_LIST = "fod_recognizing_animation_list";
 
     private static final String KEY_TORCH_LONG_PRESS_POWER_TIMEOUT =
             "torch_long_press_power_timeout";
@@ -63,6 +68,14 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
                 Settings.System.TORCH_LONG_PRESS_POWER_TIMEOUT, 0);
         mTorchLongPressPowerTimeout.setValue(Integer.toString(TorchTimeout));
         mTorchLongPressPowerTimeout.setSummary(mTorchLongPressPowerTimeout.getEntry());        
+
+        SystemSettingSwitchPreference mFODSwitchPref = (SystemSettingSwitchPreference) findPreference(KEY_FOD_RECOGNIZING_ANIMATION);
+	SystemSettingListPreference mFODListViewPref = (SystemSettingListPreference) findPreference(KEY_FOD_RECOGNIZING_ANIMATION_LIST);
+
+	if (!resources.getBoolean(R.bool.config_showFODAnimationSettings)){
+	    prefScreen.removePreference(mFODSwitchPref);
+            prefScreen.removePreference(mFODListViewPref);
+	}
 
     }
 

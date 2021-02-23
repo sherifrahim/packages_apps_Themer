@@ -22,6 +22,7 @@ import com.android.internal.logging.nano.MetricsProto;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContentResolver;
+import android.content.pm.PackageManager;
 import android.app.WallpaperManager;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -39,6 +40,8 @@ import androidx.preference.ListPreference;
 import com.nezuko.extras.preferences.SystemSettingListPreference;
 import com.nezuko.support.preferences.SystemSettingSwitchPreference;
 import com.nezuko.extras.preferences.SystemSettingListPreference;
+import com.nezuko.extras.preferences.CustomSeekBarPreference;
+import com.android.internal.util.custom.FodUtils;
 
 import android.provider.Settings;
 import com.android.settings.R;
@@ -64,12 +67,22 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
         PreferenceCategory overallPreferences = (PreferenceCategory) findPreference("fod_category");
         mResolver = getActivity().getContentResolver();
         Resources resources = getResources();
+        Context mContext = getContext();
+        final PackageManager mPm = getActivity().getPackageManager();
 
         boolean enableScreenOffFOD = getContext().getResources().
                 getBoolean(R.bool.config_supportScreenOffFod);
         Preference ScreenOffFODPref = (Preference) findPreference("fod_gesture");
         if (!enableScreenOffFOD){
             overallPreferences.removePreference(ScreenOffFODPref);
+        }
+
+        Preference AnimaTogglePref = (Preference) findPreference("fod_recognizing_animation");
+        Preference AnimaListPref = (Preference) findPreference("fod_recognizing_animation_list");
+
+        if (!com.android.internal.util.octavi.OctaviUtils.isPackageInstalled(mContext,"com.octavi.fod.animations")) {
+            overallPreferences.removePreference(AnimaTogglePref);
+            overallPreferences.removePreference(AnimaListPref);
         }
 
         if (!getResources().getBoolean(com.android.internal.R.bool.config_supportsInDisplayFingerprint)) {

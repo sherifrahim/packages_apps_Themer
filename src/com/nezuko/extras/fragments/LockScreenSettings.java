@@ -28,6 +28,7 @@ import android.content.res.Resources;
 import android.hardware.fingerprint.FingerprintManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.SystemProperties;
 import androidx.preference.SwitchPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -35,7 +36,8 @@ import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
 import android.provider.Settings;
 import androidx.preference.ListPreference;
-import com.nezuko.extras.preferences.SystemSettingSwitchPreference;
+import com.nezuko.extras.preferences.SystemSettingListPreference;
+import com.nezuko.support.preferences.SystemSettingSwitchPreference;
 import com.nezuko.extras.preferences.SystemSettingListPreference;
 
 import android.provider.Settings;
@@ -52,15 +54,27 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
             "torch_long_press_power_timeout";
 
     private ListPreference mTorchLongPressPowerTimeout;
+    private ContentResolver mResolver;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.nezuko_extras_lockscreen);
-
-        ContentResolver resolver = getActivity().getContentResolver();
-        final PreferenceScreen prefScreen = getPreferenceScreen();
+        PreferenceScreen prefScreen = getPreferenceScreen();
+        PreferenceCategory overallPreferences = (PreferenceCategory) findPreference("fod_category");
+        mResolver = getActivity().getContentResolver();
         Resources resources = getResources();
+
+        boolean enableScreenOffFOD = getContext().getResources().
+                getBoolean(com.android.internal.R.bool.config_supportScreenOffFod);
+        Preference ScreenOffFODPref = (Preference) findPreference("fod_gesture");
+        if (!enableScreenOffFOD){
+            overallPreferences.removePreference(ScreenOffFODPref);
+        }
+
+        if (!getResources().getBoolean(com.android.internal.R.bool.config_supportsInDisplayFingerprint)) {
+            prefScreen.removePreference(findPreference("fod_category"));
+        }
 
         mTorchLongPressPowerTimeout = findPreference(KEY_TORCH_LONG_PRESS_POWER_TIMEOUT);
         mTorchLongPressPowerTimeout.setOnPreferenceChangeListener(this);

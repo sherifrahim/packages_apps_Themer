@@ -1,4 +1,4 @@
-/*
+w/*
  *  Copyright (C) 2015 The OmniROM Project
  *
  * This program is free software: you can redistribute it and/or modify
@@ -66,7 +66,7 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
         Resources resources = getResources();
 
         boolean enableScreenOffFOD = getContext().getResources().
-                getBoolean(com.android.internal.R.bool.config_supportScreenOffFod);
+                getBoolean(R.bool.config_supportScreenOffFod);
         Preference ScreenOffFODPref = (Preference) findPreference("fod_gesture");
         if (!enableScreenOffFOD){
             overallPreferences.removePreference(ScreenOffFODPref);

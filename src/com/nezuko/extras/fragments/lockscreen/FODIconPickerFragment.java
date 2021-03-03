@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Octavi-OS
+ * Copyright (C) 2021 Nezuko-OS
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.octavi.lab.fragments.lockscreen;
+package com.nezuko.extras.fragments.lockscreen;
 
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -35,13 +35,13 @@ public class FODIconPickerFragment extends SettingsPreferenceFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addPreferencesFromResource(R.xml.octavi_fod_icon_picker);
+        addPreferencesFromResource(R.xml.nezuko_fod_icon_picker);
 
         getActivity().getActionBar().setTitle(R.string.fod_icon_picker_title);
     }
 
     @Override
     public int getMetricsCategory() {
-        return MetricsEvent.OCTAVI;
+        return MetricsEvent.NEZUKO;
     }
 }

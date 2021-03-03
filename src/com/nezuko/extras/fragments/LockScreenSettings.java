@@ -1,4 +1,4 @@
-w/*
+/*
  *  Copyright (C) 2015 The OmniROM Project
  *
  * This program is free software: you can redistribute it and/or modify
@@ -37,11 +37,11 @@ import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
 import android.provider.Settings;
 import androidx.preference.ListPreference;
-import com.nezuko.extras.preferences.SystemSettingListPreference;
 import com.nezuko.support.preferences.SystemSettingSwitchPreference;
-import com.nezuko.extras.preferences.SystemSettingListPreference;
-import com.nezuko.extras.preferences.CustomSeekBarPreference;
+import com.nezuko.support.preferences.SystemSettingListPreference;
+import com.nezuko.support.preferences.CustomSeekBarPreference;
 import com.android.internal.util.custom.FodUtils;
+import com.android.settings.widget.CardPreference;
 
 import android.provider.Settings;
 import com.android.settings.R;
@@ -50,11 +50,12 @@ import com.android.settings.SettingsPreferenceFragment;
 public class LockScreenSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
-    private static final String KEY_FOD_RECOGNIZING_ANIMATION = "fod_recognizing_animation";
-    private static final String KEY_FOD_RECOGNIZING_ANIMATION_LIST = "fod_recognizing_animation_list";
+    private static final String LOCKSCREEN_FOD_CATEGORY = "lockscreen_fod_category";
 
     private static final String KEY_TORCH_LONG_PRESS_POWER_TIMEOUT =
             "torch_long_press_power_timeout";
+
+    private CardPreference mLockscreenFod;
 
     private ListPreference mTorchLongPressPowerTimeout;
     private ContentResolver mResolver;
@@ -64,29 +65,16 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.nezuko_extras_lockscreen);
         PreferenceScreen prefScreen = getPreferenceScreen();
-        PreferenceCategory overallPreferences = (PreferenceCategory) findPreference("fod_category");
         mResolver = getActivity().getContentResolver();
         Resources resources = getResources();
         Context mContext = getContext();
         final PackageManager mPm = getActivity().getPackageManager();
 
-        boolean enableScreenOffFOD = getContext().getResources().
-                getBoolean(R.bool.config_supportScreenOffFod);
-        Preference ScreenOffFODPref = (Preference) findPreference("fod_gesture");
-        if (!enableScreenOffFOD){
-            overallPreferences.removePreference(ScreenOffFODPref);
-        }
-
-        Preference AnimaTogglePref = (Preference) findPreference("fod_recognizing_animation");
-        Preference AnimaListPref = (Preference) findPreference("fod_recognizing_animation_list");
-
-        if (!com.android.internal.util.octavi.OctaviUtils.isPackageInstalled(mContext,"com.octavi.fod.animations")) {
-            overallPreferences.removePreference(AnimaTogglePref);
-            overallPreferences.removePreference(AnimaListPref);
-        }
-
+        CardPreference mLockscreenFod = findPreference("lockscreen_fod_category");
         if (!getResources().getBoolean(com.android.internal.R.bool.config_supportsInDisplayFingerprint)) {
-            prefScreen.removePreference(findPreference("fod_category"));
+                    getPreferenceScreen().removePreference(mLockscreenFod);
+        } else {
+            mLockscreenFod = (CardPreference) findPreference(LOCKSCREEN_FOD_CATEGORY);
         }
 
         mTorchLongPressPowerTimeout = findPreference(KEY_TORCH_LONG_PRESS_POWER_TIMEOUT);
@@ -95,14 +83,6 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
                 Settings.System.TORCH_LONG_PRESS_POWER_TIMEOUT, 0);
         mTorchLongPressPowerTimeout.setValue(Integer.toString(TorchTimeout));
         mTorchLongPressPowerTimeout.setSummary(mTorchLongPressPowerTimeout.getEntry());        
-
-        SystemSettingSwitchPreference mFODSwitchPref = (SystemSettingSwitchPreference) findPreference(KEY_FOD_RECOGNIZING_ANIMATION);
-	SystemSettingListPreference mFODListViewPref = (SystemSettingListPreference) findPreference(KEY_FOD_RECOGNIZING_ANIMATION_LIST);
-
-	if (!resources.getBoolean(R.bool.config_showFODAnimationSettings)){
-	    prefScreen.removePreference(mFODSwitchPref);
-            prefScreen.removePreference(mFODListViewPref);
-	}
 
     }
 

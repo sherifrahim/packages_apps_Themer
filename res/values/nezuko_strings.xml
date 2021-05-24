@@ -30,6 +30,7 @@
     <string name="accent_title">Accents</string>
      <string name="accent_summary">RGB accent picker, Auto accents</string>
     <string name="headericons">Header Icons</string>
+    <string name="lockscreen_fod_category">Fingerprint On Display</string>
 
     <!-- General strings -->
     <string name="ok">OK</string>
@@ -274,6 +275,11 @@
 
     <!-- FOD icon animation -->
     <string name="fod_icon_animation_summary">Animate the FOD icon when turning on the screen</string>
+    <string name="fod_icon_animation_effect_title">Select FOD icon animation effect</string>
     <string name="fod_icon_animation">Animated FOD icon</string>
+    <string name="fod_icon_animation_miui_aod">Xiaomi MIUI</string>
+    <string name="fod_icon_animation_zaid_oneui">Samsung OneUI 3</string>
+    <string name="fod_icon_animation_oneui2">Samsung OneUI 2</string>
+    <string name="fod_icon_animation_oos">OnePlus OxygenOS 11</string>
 
 </resources>

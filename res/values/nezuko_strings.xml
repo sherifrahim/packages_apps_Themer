@@ -276,4 +276,8 @@
     <string name="fod_icon_animation_summary">Animate the FOD icon when turning on the screen</string>
     <string name="fod_icon_animation">Animated FOD icon</string>
 
+    <!-- Screen off fod -->
+    <string name="fod_gesture_title">Unlock with fingerprint when the screen is off</string>
+    <string name="fod_gesture_summary">[REBOOT] Allows unlocking while screen is off</string>
+
 </resources>

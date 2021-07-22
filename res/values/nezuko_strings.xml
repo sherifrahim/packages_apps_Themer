@@ -30,7 +30,6 @@
     <string name="accent_title">Accents</string>
      <string name="accent_summary">RGB accent picker, Auto accents</string>
     <string name="headericons">Header Icons</string>
-    <string name="lockscreen_fod_category">Fingerprint On Display</string>
 
     <!-- General strings -->
     <string name="ok">OK</string>
@@ -252,16 +251,6 @@
     <string name="fod_recog_animation">Fingerprint animation</string>
     <string name="fod_recog_animation_summary">Shows an animation while reading your finger</string>
     <string name="fod_recog_animation_effect_title">Select fingerprint animation effect</string>
-    <string name="fod_recog_animation_miui_normal">Xiaomi default</string>
-    <string name="fod_recog_animation_miui_aod">Xiaomi AOD</string>
-    <string name="fod_recog_animation_miui_aurora">Xiaomi Aurora (K30 Pro)</string>
-    <string name="fod_recog_animation_miui_aurora_cas">Xiaomi Aurora (Mi 10 Ultra)</string>
-    <string name="fod_recog_animation_miui_light">Xiaomi Light</string>
-    <string name="fod_recog_animation_miui_pop">Xiaomi Pop</string>
-    <string name="fod_recog_animation_miui_pulse">Xiaomi Pulse</string>
-    <string name="fod_recog_animation_miui_pulse_white">Xiaomi Pulse (White)</string>
-    <string name="fod_recog_animation_miui_rhythm">Xiaomi Rhythm</string>
-    <string name="fod_recog_animation_miui_star_cas">Xiaomi Starlight</string>
     <string name="fod_recog_animation_op_cosmos">OnePlus Cosmos</string>
     <string name="fod_recog_animation_op_energy">OnePlus Energy</string>
     <string name="fod_recog_animation_op_mclaren">OnePlus McLaren</string>
@@ -271,7 +260,6 @@
     <string name="fod_recog_animation_op_wave">OnePlus Wave</string>
     <string name="fod_recog_animation_pureview_dna">Nokia DNA</string>
     <string name="fod_recog_animation_pureview_future">Nokia Future</string>
-    <string name="fod_recog_animation_pureview_halo_ring">Nokia Halo ring</string>
     <string name="fod_recog_animation_pureview_molecular">Nokia Molecular</string>
     <string name="fod_recog_animation_rog_fusion">Asus Fusion</string>
     <string name="fod_recog_animation_rog_pulsar">Asus Pulsar</string>

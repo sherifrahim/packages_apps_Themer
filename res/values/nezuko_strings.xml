@@ -30,6 +30,7 @@
     <string name="accent_title">Accents</string>
      <string name="accent_summary">RGB accent picker, Auto accents</string>
     <string name="headericons">Header Icons</string>
+    <string name="lockscreen_fod_category">Fingerprint On Display</string>
 
     <!-- General strings -->
     <string name="ok">OK</string>

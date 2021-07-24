@@ -49,21 +49,6 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.nezuko_extras_lockscreen);
 
-        PreferenceCategory overallPreferences = (PreferenceCategory) findPreference("fod_category");
-        mResolver = getActivity().getContentResolver();
-
-        boolean enableScreenOffFOD = getContext().getResources().
-                getBoolean(com.android.internal.R.bool.config_supportsInDisplayFingerprint);
-        Preference ScreenOffFODPref = (Preference) findPreference("fod_gesture");
-
-        if (!enableScreenOffFOD){
-            overallPreferences.removePreference(ScreenOffFODPref);
-        }
-
-        if (!getResources().getBoolean(com.android.internal.R.bool.config_supportsInDisplayFingerprint)) {
-            prefScreen.removePreference(findPreference("fod_category"));
-        }
-
         ContentResolver resolver = getActivity().getContentResolver();
         Resources resources = getResources();
 

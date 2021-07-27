@@ -253,18 +253,14 @@
     <string name="fod_recog_animation_summary">Shows an animation while reading your finger</string>
     <string name="fod_recog_animation_effect_title">Select fingerprint animation effect</string>
     <string name="fod_recog_animation_op_cosmos">OnePlus Cosmos</string>
-    <string name="fod_recog_animation_op_energy">OnePlus Energy</string>
     <string name="fod_recog_animation_op_mclaren">OnePlus McLaren</string>
     <string name="fod_recog_animation_op_ripple">OnePlus Ripple</string>
     <string name="fod_recog_animation_op_scanning">OnePlus Cyberpunk 2077</string>
     <string name="fod_recog_animation_op_stripe">OnePlus Stripe</string>
-    <string name="fod_recog_animation_op_wave">OnePlus Wave</string>
-    <string name="fod_recog_animation_pureview_dna">Nokia DNA</string>
-    <string name="fod_recog_animation_pureview_future">Nokia Future</string>
-    <string name="fod_recog_animation_pureview_molecular">Nokia Molecular</string>
     <string name="fod_recog_animation_rog_fusion">Asus Fusion</string>
     <string name="fod_recog_animation_rog_pulsar">Asus Pulsar</string>
     <string name="fod_recog_animation_rog_supernova">Asus Supernova</string>
+    <string name="fod_recog_animation_pureview_halo_ring">Nokia Halo ring</string>
 
     <!-- FOD pressed color -->
     <string name="fod_pressed_color_title">Fingerprint pressed color</string>
